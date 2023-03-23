@@ -8,7 +8,7 @@ import tempfile
 from typing import Dict
 
 
-__version__ = "0.1.3"
+__version__ = "0.1.4"
 
 
 def _global_venv_dir() -> str:
@@ -105,11 +105,16 @@ def script_dependencies(requirements: Dict[str, str], source_file: str) -> None:
                 ],
                 check=True,
             )
-            with tempfile.NamedTemporaryFile(
-                prefix="requirements_", suffix=".txt", mode="w+"
-            ) as reqs_txt:
-                reqs_txt.write(requirements_str)
-                reqs_txt.flush()
+            # We have to use `delete=False` and clean up manually because on Windows,
+            # the pip process can't read from this file if we have it open in this one.
+            reqs_txt = tempfile.NamedTemporaryFile(
+                prefix="requirements_", suffix=".txt", mode="w+", delete=False
+            )
+            try:
+                try:
+                    reqs_txt.write(requirements_str)
+                finally:
+                    reqs_txt.close()
                 subprocess.run(
                     [
                         _find_pip(),
@@ -120,6 +125,8 @@ def script_dependencies(requirements: Dict[str, str], source_file: str) -> None:
                     check=True,
                     env=_env_for_venv(venv_dir),
                 )
+            finally:
+                os.remove(reqs_txt.name)
         except Exception:
             if os.path.exists(venv_dir):
                 shutil.rmtree(venv_dir)

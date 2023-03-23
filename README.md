@@ -5,7 +5,7 @@ dependency or two, it can be annoying to manage virtualenvs. This is especially
 annoying if you want to write the scripts to manage your dev environment in python.
 
 `envless` provides a self-contained way for python scripts to declare and load
-their dependencies. Here's an example script to make the idea clearer that
+their dependencies. To make the idea clearer, here's an example script that
 fetches and prints the `python.org` site:
 
 ```python

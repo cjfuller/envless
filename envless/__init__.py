@@ -8,7 +8,7 @@ import tempfile
 from typing import Dict
 
 
-__version__ = "0.1.1"
+__version__ = "0.1.2"
 
 
 def _global_venv_dir() -> str:

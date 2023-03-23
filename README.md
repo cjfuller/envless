@@ -1,4 +1,4 @@
-# envless: a python utility for running scripts with dependencies declared inline.
+# envless: a python utility for running scripts with dependencies declared inline
 
 Python scripts are great and useful, but for simple tasks that require a
 dependency or two, it can be annoying to manage virtualenvs. This is especially

@@ -1,8 +1,11 @@
 [tool.poetry]
 name = "envless"
-version = "0.1.0"
+version = "0.1.1"
 description = "Declare your python dependencies inside your scripts"
 authors = ["Colin Fuller <colin@cjf.io>"]
+license = "MIT"
+readme = "README.md"
+homepage = "https://github.com/cjfuller/envless"
 
 [tool.poetry.dependencies]
 python = ">=3.8"

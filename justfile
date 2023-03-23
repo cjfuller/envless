@@ -15,3 +15,8 @@ test:
     PYTHONPATH=. python tests/native_deps_test.py
 
 check: lint format type-check
+
+publish:
+    poetry publish --build \
+        -u __token__ -p `op read "op://Personal/pypi api token/password"`
+

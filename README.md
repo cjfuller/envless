@@ -87,7 +87,7 @@ Your call to `envless.script_dependencies` must come before you import any code
 outside the standard library.
 
 `envless` only works well when used in the script that you're using as an
-entrypoint. Importing another script that uses endless will end up executing
+entrypoint. Importing another script that uses envless will end up executing
 that other script as the entrypoint, which is probably not what you want. If
 you think you might need to import a script that uses envless, you can put the
 call to `envless.script_dependencies` inside an `if __name__ == "__main__":`

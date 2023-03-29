@@ -128,4 +128,8 @@ def script_dependencies(requirements: Dict[str, str], source_file: str) -> None:
             if os.path.exists(venv_dir):
                 shutil.rmtree(venv_dir)
             raise
-    os.execve(sys.executable, [sys.executable, source_file], _env_for_venv(venv_dir))
+    os.execve(
+        sys.executable,
+        [sys.executable, source_file, *sys.argv[1:]],
+        _env_for_venv(venv_dir),
+    )

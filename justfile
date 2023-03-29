@@ -13,6 +13,7 @@ type-check:
 test:
     PYTHONPATH=. python tests/basic_deps_test.py
     PYTHONPATH=. python tests/native_deps_test.py
+    PYTHONPATH=. python tests/cli_args_test.py a b c
 
 check: lint format type-check
 

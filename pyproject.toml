@@ -20,6 +20,9 @@ ruff = "==0.0.258"
 # which is necessarily violated in all the tests.
 ignore = ["E402"]
 
+[tool.ruff.per-file-ignores]
+"envless/__init__.py" = ["F403"]
+
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
